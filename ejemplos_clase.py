@@ -107,29 +107,27 @@ def read_csv():
     print('Latitud:', latitud)
 
     cantidad_filas = len(data)
-    for i in range (cantidad_filas):
+    for i in range(cantidad_filas):
         if i == 5:
             break
         row = data[i]
         latitud = float(row.get('latitud'))
-        print('Fila', i ,' dato latitud:', latitud)
-
+        print('Fila', i, 'dato latitud:', latitud)
 
 
 def write_csv():
-    
     # Abrir archivo para escritura
     csvfile = open('agenda.csv', 'w', newline='')
-    
+
     # Detallar los nombres de las columnas
-    header = ['nombre', 'apellido','numero']
+    header = ['nombre', 'apellido', 'numero']
     # Crear el objeto para escribir las lineas de archivo
     # basado en los nombres de las columnas
     writer = csv.DictWriter(csvfile, fieldnames=header)
 
     writer.writeheader()
     writer.writerow({'nombre': 'Max', 'apellido': 'Power'})
-    writer.writerow({'apellido': 'School', 'nombre': 'Inove', 'numero' : '12345678'})
+    writer.writerow({'apellido': 'School', 'nombre': 'Inove', 'numero': '12345678'})
 
     csvfile.close()
 
@@ -157,7 +155,3 @@ if __name__ == '__main__':
     read_csv()
     write_csv()
     read_csv_vieja_escuela()
-
-
-
-
