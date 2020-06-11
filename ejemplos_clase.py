@@ -4,7 +4,7 @@ Archivos [Python]
 Ejemplos de clase
 ---------------------------
 Autor: Inove Coding School
-Version: 1.1
+Version: 1.2
 
 Descripcion:
 Programa creado para mostrar ejemplos prácticos de los visto durante la clase
@@ -12,7 +12,7 @@ Programa creado para mostrar ejemplos prácticos de los visto durante la clase
 
 __author__ = "Inove Coding School"
 __email__ = "alumnos@inove.com.ar"
-__version__ = "1.1"
+__version__ = "1.2"
 
 import csv
 import re
@@ -125,8 +125,13 @@ def write_csv():
     # basado en los nombres de las columnas
     writer = csv.DictWriter(csvfile, fieldnames=header)
 
+    mi_nombre = 'Max'
+    mi_apellido = 'Power'
+
     writer.writeheader()
-    writer.writerow({'nombre': 'Max', 'apellido': 'Power'})
+    fila = {'nombre': mi_nombre, 'apellido': mi_apellido}
+    fila['nombre'] = mi_nombre
+    writer.writerow(fila)
     writer.writerow({'apellido': 'School', 'nombre': 'Inove', 'numero': '12345678'})
 
     csvfile.close()
