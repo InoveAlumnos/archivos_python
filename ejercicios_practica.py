@@ -117,6 +117,38 @@ def ej4():
     con una sola categoría de edad en solo una sección (Bike, Run, Swim)
     de la carrera. Sería igual al ej4 la información recolectada y calculada.
 
+    NOTA IMPORTANTE:
+    En este ejercicio se pide calcular el promedio, el máximo y mínimo tiempo
+    que realizaron los corredores en distintas etapas de la carrera.
+    La dificultad radica en que el dato que el archivo nos provee está
+    en el siguiente formado:
+
+    hora:minutos:segundos, 0:47:27 --> (0 horas, 47 minutos, 27 segundos).
+
+    No pueden utilizar este valor para calcular el promedio, el máximo
+    y mínimo ya que está en formato texto, no está en formato numérico.
+    Para poder realizar cálculos matemáticos sobre este dato deben primero
+    llevarlo a un formato que les permita realizar cálculos.
+
+    Normalmente en estos casos lo que se realiza es llevar este dato
+    0:47:27 a segundos, es decir, calcular cuantos segundos le llevó
+    al corredor completar esa etapa, ya que segundos es la unidad mínima
+    presentada (horas, minutos, segundos).
+
+    Para poder calcular la cantidad de segundos totales deberían operar
+    de la siguiente forma:
+
+    segundos_totales = horas * 3600 + minutos * 60 + segundos
+
+    De esta forma están pasando de un formato texto horas:minutos:segundos a
+    un número "segundos_totales" el cual pueden calcular
+    promedio, máximo y mínimo
+    
+    Queda en sus manos pensar como extraer las "horas" "minutos" y "segundos"
+    del formato "horas:minutos:segundos", 
+    pueden realizar operaciones de texto ahí, o usar algún módulo externo
+    de Python que resuelva este problema.
+
     '''
 
 
