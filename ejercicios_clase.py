@@ -4,7 +4,7 @@ Archivos [Python]
 Ejercicios de clase
 ---------------------------
 Autor: Inove Coding School
-Version: 1.1
+Version: 1.2
 
 Descripcion:
 Programa creado para poner a prueba los conocimientos
@@ -13,7 +13,7 @@ adquiridos durante la clase
 
 __author__ = "Inove Coding School"
 __email__ = "alumnos@inove.com.ar"
-__version__ = "1.1"
+__version__ = "1.2"
 
 import csv
 import re
@@ -26,7 +26,7 @@ def ej1():
     '''
     Realizar un prorgrama que cuenta la cantidad de líneas
     de un archivo. Abra el archivo "notas.txt" en modo "lectura",
-    lea linea alinea el archivo, y cuente la cantidad de líneas.
+    lea linea a linea el archivo, y cuente la cantidad de líneas.
     Al finalizar el proceso, imprimir en pantalla la cantidad
     de líneas leaidas.
 
@@ -48,7 +48,7 @@ def ej2():
     "notas.txt"
 
     Debe leer "línea por línea" el archivo "nota.txt" y copiar
-    "línea a línea" en el archivo para escritura.
+    "línea a línea" en el archivo para escritura (write)
 
     A su vez, mientras va escribiendo "línea a línea" debe
     contar la cantidad de línea que se copiaron e imprimir
@@ -81,47 +81,41 @@ def ej4():
     Realice un programa que pida por consola
     el nombre de una fruta o verdura y luego
     pida la cantidad que hay en stock
-    Agregar al diccionario el par:
+    Agregar al diccionario "inventario" el par:
     <fruta>:<cantidad>
+    El diccionario "inventario" ya viene cargado
+    con el valor el stock de manzanas para que vean
+    de ejemplo.
     Esta operacion se debe realizar en un bucle
     hasta ingresar como fruta/verdura la palabra "FIN"
 
-    Al finalizar el bucle anterior, debe generar otro bucle
-    en donde se pida ingresar la fruta o verdura que desea
-    conocer su estado de stock.
-    Deberá imprimir en pantalla la cantidad de esa fruta en
-    inventario, y en caso de no exista ese elemento en nuestro
-    inventario se debe imprimir en pantalla "Elemento no encuentrado"
-    NOTA: Proponemos utilizarel método "get" que devuelve "None" si el
-    elemeto no existe en el diccionario.
-
-    Se debe terminar ese segundo bucle cuando se ingrese la palabra FIN
     '''
 
-    # 1) Bucle 1
+    # En el bucle realizar:
     # Generar y completar el diccionario con las frutas y cantidades
     # ingresadas por consola hasta ingresar la palabra "FIN"
-
-    # 2) Bucle 2
-    # Ingresar por consola la fruta que desea conocer en stock
-    # Finalizar cuando la fruta ingresada sea igual a "FIN"
 
 
 def ej5():
     # Ejercicios con archivos CSV
-    inventario = {}
+    inventario = {'Fruta Verdura': 'manzana', 'Cantidad': 10}
 
     '''
-    Basado en el ejercicio anterior, genere un archivo CSV
+    Parecido al el ejercicio anterior, genere un archivo CSV
     (abrir un archivo CSV como escritura) que posea las siguientes
     columnas:
     1) 'Fruta Verdura'
     2) 'Cantidad'
 
     Estas dos columnas representan el nombre de las dos "claves"
-    del diccionario que utilizaremos para escribir en el archivo CSV
+    del diccionario, que utilizaremos para escribir en el archivo CSV:
 
     writer.writerow({'Fruta Verdura': ....., 'Cantidad': ....})
+
+    Ojo! No es igual al diccionario del anterior ejercicio, 
+    porque el anterior usaba como "clave" el nombre de la fruta.
+    Ahora tenemos dos pares de valores "clave: valor", pueden
+    ver el inventario con el ejemplo de la manzana.
 
     Deberá realizar un bucle en donde en cada iteracion del bucle
     se le socilitará por consola que ingrese un tipo de fruta o verdura

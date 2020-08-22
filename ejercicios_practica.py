@@ -70,7 +70,7 @@ def ej3():
     '''
 
 
-def ej4():
+def ejercicio_extra():
     print("Ahora sí! buena suerte :)")
 
     '''
@@ -157,4 +157,4 @@ if __name__ == '__main__':
     #ej1()
     #ej2()
     #ej3()
-    #ej4()
+    #ejercicio_extra()

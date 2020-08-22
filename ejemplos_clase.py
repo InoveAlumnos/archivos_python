@@ -4,7 +4,7 @@ Archivos [Python]
 Ejemplos de clase
 ---------------------------
 Autor: Inove Coding School
-Version: 1.2
+Version: 1.3
 
 Descripcion:
 Programa creado para mostrar ejemplos prácticos de los visto durante la clase
@@ -12,7 +12,7 @@ Programa creado para mostrar ejemplos prácticos de los visto durante la clase
 
 __author__ = "Inove Coding School"
 __email__ = "alumnos@inove.com.ar"
-__version__ = "1.2"
+__version__ = "1.3"
 
 import csv
 import re
@@ -159,4 +159,7 @@ if __name__ == '__main__':
     write_txt()
     read_csv()
     write_csv()
+
+    # Les queda para que vean como se tenia que leer
+    # un archivo CSV sin estas hermosas herramientas
     read_csv_vieja_escuela()
