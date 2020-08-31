@@ -4,7 +4,7 @@ Archivos [Python]
 Ejercicios de práctica
 ---------------------------
 Autor: Inove Coding School
-Version: 1.2
+Version: 1.3
 
 Descripcion:
 Programa creado para que practiquen los conocimietos
