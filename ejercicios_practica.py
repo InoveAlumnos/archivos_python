@@ -11,10 +11,12 @@ Programa creado para que practiquen los conocimietos
 adquiridos durante la semana
 '''
 
-__author__ = "Inove Coding School"
-__email__ = "alumnos@inove.com.ar"
+__author__ = "Pablo Ruiz Diaz"
+__email__ = "rd.pablo@gmail.com"
 __version__ = "1.2"
 
+import csv
+import tiempos
 
 def ej1():
     print("Cuenta caracteres")
@@ -28,6 +30,14 @@ def ej1():
     Debe realizar la sumatoria total de la cantidad de caracteres de todas
     las líneas para obtener el total del archivo e imprimirlo en pantalla
     '''
+
+    with open('texto.txt', 'r') as texto:
+        lineas = texto.readlines()
+
+        for i in range(len(lineas)):
+            cantidad_letras += len(lineas[i])
+        
+        print(cantidad_letras)
 
 
 def ej2():
@@ -50,11 +60,23 @@ def ej2():
     de texto de la consola antes de copiar la archivo.
     '''
 
+    with open('texto2.txt', 'w') as texto2:
+        while True:
+            linea = str(input('Ingrese texto: '))
+
+            if linea == '':
+                break
+            
+            texto2.write(linea)
+            texto2.write('\n')
+
+            cantidad_letras += len(linea)
+    
+    print(cantidad_letras)
+
 
 def ej3():
     print("Escrutinio de los alquileres de Capital Federal")
-    cantidad_ambientes = 2
-
     '''
     Realizar un prorgrama que solicite la cantidad de
     ambientes de los alquileres que se desean analizar.
@@ -68,6 +90,96 @@ def ej3():
     4) Obtener el mínimo valor de alquiler en "pesos"
     de la cantidad de ambientes deseados.
     '''
+
+    ARS = 0
+    ARS_cant = 0
+    ARS_min = None
+    ARS_max = None
+    USD = 0
+    USD_cant = 0
+    USD_min = None
+    USD_max = None
+    no_moneda = 0
+
+    tipo_inmueble = list()
+    cantidad_ambientes = list()
+
+    with open('propiedades.csv', 'r', newline='') as propiedades:
+        inmueble = list(csv.DictReader(propiedades))
+        
+        for row in inmueble:
+            tipo = row.get('tipo_propiedad')
+            if tipo in tipo_inmueble:
+                continue
+            else:
+                tipo_inmueble.append(tipo)
+        
+        print('Ingrese el numero de inmueble que quiere revisar:')
+        for i in range(len(tipo_inmueble)):
+            print('\t', i, '->', tipo_inmueble[i])
+        
+        inmueble_buscado = int(input('Inmueble: '))
+
+        for row in inmueble:
+            ambientes = row.get('ambientes')
+            if tipo_inmueble[inmueble_buscado] == row.get('tipo_propiedad'):
+                if ambientes in cantidad_ambientes:
+                    continue
+                else:
+                    if ambientes == '':
+                        continue
+
+                    cantidad_ambientes.append(ambientes)
+            else:
+                continue
+
+        if cantidad_ambientes == []:
+            print('Sin informacion de ambientes')
+        else:
+            cantidad_ambientes.sort()
+            
+            print('Ingrese el numero posicion de cantidad de ambientes que quiere revisar:')
+            
+            for i in range(len(cantidad_ambientes)):
+                print('\t', i, '->', cantidad_ambientes[i])
+
+        ambientes_buscado = int(input('Cantidad de ambientes: '))
+
+        print('El siguiente listado es la informacion de acuerdo a las condiciones ingresadas')
+
+        for moneda in inmueble:
+            moneda_ = moneda.get('moneda')
+
+            if moneda_ == 'ARS':
+                ARS += 1
+            elif moneda_ == 'USD':
+                USD += 1
+            else:
+                no_moneda += 1
+        
+        print('Su inmueble tiene una cantidad de {} en AR$, {} en U$D y {} no definido' .format(ARS, USD, no_moneda))
+
+        for moneda in inmueble:
+            if moneda.get('moneda') == 'ARS':
+                ARS += int(moneda.get('precio'))
+                ARS_cant += 1
+                
+                if (ARS_min == None or ARS_min > int(moneda.get('precio'))):
+                    ARS_min = int(moneda.get('precio'))
+                
+                if (ARS_max == None or ARS_max < int(moneda.get('precio'))):
+                    ARS_max = int(moneda.get('precio'))
+            elif moneda.get('moneda') == 'USD':
+                USD += int(moneda.get('precio'))
+                USD_cant += 1
+                if (USD_min == None or USD_min > int(moneda.get('precio'))):
+                    USD_min = int(moneda.get('precio'))
+                
+                if (USD_max == None or USD_max < int(moneda.get('precio'))):
+                    USD_max = int(moneda.get('precio'))
+        
+        print('Promedio de precios:\n\tAR$ {}\n\tU$D {}' .format(ARS/ARS_cant, USD/USD_cant))
+        print('El precio minimo y maximos son:\n\tAR$ -> Minimo {}\tMaximo {}\n\tU$D -> Minimo {}\tMaximo {}' .format(ARS_min, ARS_max, USD_min, USD_max))
 
 
 def ejercicio_extra():
@@ -148,13 +260,59 @@ def ejercicio_extra():
     del formato "horas:minutos:segundos", 
     pueden realizar operaciones de texto ahí, o usar algún módulo externo
     de Python que resuelva este problema.
-
     '''
+
+    tipo_division = []
+    tiempo_swim = []
+    tiempo_run = []
+    tiempo_bike = []
+
+    with open('2019 Ironman World Championship Results.csv', 'r') as ironman:
+        iron_man = list(csv.DictReader(ironman))
+
+        for row in iron_man:
+            division = row.get('Division')
+            if division in tipo_division:
+                continue
+            else:
+                tipo_division.append(division)
+        
+        print('Ingrese posicion de division atletica deseada:')
+        for i in range(len(tipo_division)):
+            print('\t', i, '->', tipo_division[i])
+        
+        division_buscada = int(input('Division: '))
+
+        print('Escriba que categorgia quiere analizar\n\tSwim\n\tBike\n\tRun')
+        categoria = str(input('-> '))
+
+        for row in iron_man:
+            tiempo_swim.append(row.get('Swim'))
+            tiempo_run.append(row.get('Run'))
+            tiempo_bike.append(row.get('Bike'))
+        
+        if categoria == 'Swim':
+            maximo_ = tiempos.maximo(tiempo_swim)
+            minimo_ = tiempos.minimo(tiempo_swim)
+            promedio_ = tiempos.promedio(tiempo_swim)
+        elif categoria == 'Run':
+            maximo_ = tiempos.maximo(tiempo_run)
+            minimo_ = tiempos.minimo(tiempo_run)
+            promedio_ = tiempos.promedio(tiempo_run)
+        elif categoria == 'Bike':
+            maximo_ = tiempos.maximo(tiempo_bike)
+            minimo_ = tiempos.minimo(tiempo_bike)
+            promedio_ = tiempos.promedio(tiempo_bike)
+        else:
+            print('Error en la categoria seleccionada')
+            
+        print('Promedio de {} es: {}' .format(categoria, promedio_))
+        print('Los tiempos minimo y maximo son:\n\t-> Minimo {}\tMaximo {}' .format(minimo_, maximo_))
 
 
 if __name__ == '__main__':
     print("Ejercicios de práctica")
-    #ej1()
-    #ej2()
-    #ej3()
-    #ejercicio_extra()
+    ej1()
+    ej2()
+    ej3()
+    ejercicio_extra()

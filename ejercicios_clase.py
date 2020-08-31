@@ -36,6 +36,12 @@ def ej1():
     de líneas encontradas.
     '''
 
+    with open('notas.txt', 'r') as fi:
+        for line in fi:
+            cantidad_lineas += 1
+    
+    print(cantidad_lineas)
+
 
 def ej2():
     # Ejercicios con archivos txt
@@ -55,11 +61,16 @@ def ej2():
     al final del proceso el valor.
     '''
 
-    # fi = open('nota.txt', 'r')
-    # fo = open(.......)
+    fi = open('notas.txt', 'r')
+    fo = open('notas_copy.txt', 'w')
 
+    for line in fi.readlines():
+        fo.write(line)
+    
     # Recuerde cerrar los archivos al final ;)
-
+    fi.close()
+    fo.close()
+    
 
 def ej3():
     # Ejercicios con archivos CSV
@@ -72,6 +83,21 @@ def ej3():
     Al finalizar el proceso, imprima en pantalla los resultados.
     '''
 
+    cant_dpto_2amb = 0
+    cant_dpto_3amb = 0
+
+    with open('propiedades.csv', 'r') as fi:
+        data = list(csv.DictReader(fi))
+    
+    for i in range(len(data)):
+        ambientes = data[i]
+        if ambientes.get('ambientes') == '2':
+            cant_dpto_2amb += 1
+        if ambientes.get('ambientes') == '3':
+            cant_dpto_3amb += 1
+    
+    print('Cantidad de Departamentos\n > con 2 ambientes {}\n > con 3 ambientes {}' .format(cant_dpto_2amb, cant_dpto_3amb))
+    
 
 def ej4():
     # Ejercicios con diccionarios
@@ -95,10 +121,45 @@ def ej4():
     # Generar y completar el diccionario con las frutas y cantidades
     # ingresadas por consola hasta ingresar la palabra "FIN"
 
+    fruta = {}
+    
+    while True:
+        fruta_nueva = str(input('Ingresar nueva fruta ("Fin" para finalizar): '))
+        
+        if fruta_nueva == 'Fin':
+            break
+        
+        if fruta_nueva in inventario:
+            fruta_existente = str(input('Esta fruta ya se encuentra en el inventario. Desea cambiar la cantidad total? Y/N\n'))
+            
+            if fruta_existente == 'Y':
+                cant_fruta_nueva = int(input('Cantidad total de {}: ' .format(fruta_nueva)))
+                
+                inventario.pop(str(fruta_nueva))
+                
+                fruta = {str(fruta_nueva): str(cant_fruta_nueva)}
+                
+                inventario.update(fruta)
+            else:
+                continue
+
+            continue
+
+        cant_fruta_nueva = int(input('Cantidad de {}: ' .format(fruta_nueva)))
+
+        fruta = {str(fruta_nueva): str(cant_fruta_nueva)}
+
+        inventario.update(fruta)
+    
+    print('Fruta > Cantidad')
+   
+    for i, j in inventario.items():
+        print(i, ' > ', j)
+
 
 def ej5():
     # Ejercicios con archivos CSV
-    inventario = {'Fruta Verdura': 'manzana', 'Cantidad': 10}
+    inventario = {}
 
     '''
     Parecido al el ejercicio anterior, genere un archivo CSV
@@ -135,11 +196,28 @@ def ej5():
 
     # writer.writerow({'Fruta Verdura': ....., 'Cantidad': ....})
 
+    with open('csv_verduleria.csv', 'w', newline='') as inventario_verduleria:
+        header = ['Fruta Verdura', 'Cantidad']
+        writer = csv.DictWriter(inventario_verduleria, fieldnames=header)
+        writer.writeheader()
+        
+        while True:
+            fruta_nueva = str(input('Ingresar nueva fruta ("Fin" para finalizar): '))
+        
+            if fruta_nueva == 'Fin':
+                break
+            
+            cant_fruta_nueva = int(input('Cantidad de {}: ' .format(fruta_nueva)))
+
+            fruta = {'Fruta Verdura': str(fruta_nueva), 'Cantidad': str(cant_fruta_nueva)}
+
+            writer.writerow(fruta)
+
 
 if __name__ == '__main__':
     print("Bienvenidos a otra clase de Inove con Python")
     ej1()
-    #ej2()
-    #ej3()
-    #ej4()
-    #ej5()
+    ej2()
+    ej3()
+    ej4()
+    ej5()
