@@ -28,12 +28,12 @@ def diccionario():
     espanol = {}
 
     portugues['hello'] = 'oi'
-    portugues['by'] = 'tchau'
+    portugues['bye'] = 'tchau'
     espanol['hello'] = 'hola'
-    espanol['by'] = 'adios'
+    espanol['bye'] = 'adios'
 
     translate('hello', espanol)  # print --> hola
-    translate('by', portugues)   # print --> tchau
+    translate('bye', portugues)   # print --> tchau
 
     key = 'hell'
     try:
