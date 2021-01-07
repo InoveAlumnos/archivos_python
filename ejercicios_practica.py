@@ -4,7 +4,7 @@ Archivos [Python]
 Ejercicios de práctica
 ---------------------------
 Autor: Inove Coding School
-Version: 1.2
+Version: 1.4
 
 Descripcion:
 Programa creado para poner a prueba los conocimientos
@@ -13,56 +13,90 @@ adquiridos durante la clase
 
 __author__ = "Inove Coding School"
 __email__ = "alumnos@inove.com.ar"
-__version__ = "1.2"
+__version__ = "1.4"
 
 import csv
 import re
 
 
 def ej1():
-    # Ejercicios con archivos txt
-    cantidad_lineas = 0
+    print('Ejercicios con diccionarios')
+    # Crear un diccionario vacio que luego completaremos
+    # con el stock de elementos de ferreteris
+    # el diccionario vacio debe llamarse "stock"
+    
+    # stock = ....
 
-    '''
-    Realizar un prorgrama que cuenta la cantidad de líneas
-    de un archivo. Abra el archivo "notas.txt" en modo "lectura",
-    lea linea a linea el archivo, y cuente la cantidad de líneas.
-    Al finalizar el proceso, imprimir en pantalla la cantidad
-    de líneas leaidas.
+    # Luego de crear el diccionario completelo
+    # con el siguiente stock:
+    # tornillos = 100
+    # tuercas = 150
+    # arandelas = 300
 
-    Como práctica de funciones, puede realizar la función
-    "contar_lineas" que reciba como parámetro el nombre del archivo
-    y cumpla el objetivo especificado, retornando la cantidad
-    de líneas encontradas.
-    '''
+    # Los nombres tornillos, tuercas y arandelas
+    # son las claves (keys) del diccionario
+    # mientras que las cantidades son los valores (values)
+
+    # Una vez armado el diccionario imprimirlo en pantalla con print
 
 
 def ej2():
-    # Ejercicios con archivos txt
-    cantidad_lineas = 0
+    print('Ejercicio con diccionarios')
+    # Basado en el ejemplo anterior, deseamos tener un stock mes a mes
+    # de los items tornillos, tuerca y arandelas.
+
+    # Crear un diccionario por cada mes, cada diccionario se llamara "mes"
+    # Cada uno que se genere debe tener los tres campos
+    # tornillos, tuerca y arandelas y su respectivo stock
+
+    # Cada diccionario deberá almacenarse en una lista llamada stock
+
+    # Paso 1:
+    # Generar un bucle de 3 iteraciones, solo generaremos el stock de
+    # tres meses
+
+    # Paso 2:
+    # En cada iteracion del bucle solicitar por consola cuando
+    # stock se desea informar de cada uno de los 3 elementos
+
+    # Paso 3:
+    # Generar un diccionar llamado "mes" con los tres valores
+    # de stock ingresados por consola
+
+    # Paso 4:
+    # Almacenar ese diccionario generado en una lista
+    # llamada "stock"
+
+    # Paso 5:
+    # Repetir el proceso nuevamente en la siguiente
+    # iteracion del bucle
+    # Cuando finalice el bucle su lista debera contener los tres
+    # diccionarios almacenados.
+
+    # Paso 6:
+    # Imprimir en pantalla el resultado, deberá verse como
+    # el siguiente ejemplo:
+
+    # [{'tornillos': 30, 'tuercas': 20, 'arandelas': 5}, {'tornillos': 100, 'tuercas': 50, 'arandelas': 15}, {'tornillos': 80, 'tuercas': 70, 'arandelas': 10}]
+
+    # NOTA: Este ejercicio es exactamente lo mismo que armar
+    # el edificio viste en clase, con los departamentos por piso
+    # pero los valores para cada diccionario en cada mes
+    # son ingresados por consola
+
+
+def eje3():
+    print('Ejercicio de archivos CSV')
     '''
-    Copy paste!!
-    Deberá abrir dos archivo txt, uno para lectura (fi) y otro
-    para escritura (fo) (un archivo nuevo).
-    El archivo abierto para lectura (fi) debe ser el archivo
-    "notas.txt"
-
-    Debe leer "línea por línea" el archivo "nota.txt" y copiar
-    "línea a línea" en el archivo para escritura (write)
-
-    A su vez, mientras va escribiendo "línea a línea" debe
-    contar la cantidad de línea que se copiaron e imprimir
-    al final del proceso el valor.
+    Realice un programa que abra el archivo 'stock.csv'
+    y cuente el stock total de tornillos a lo largo
+    de todo el archivo, sumando el stock en cada
+    fila del archivo
     '''
 
-    # fi = open('nota.txt', 'r')
-    # fo = open(.......)
 
-    # Recuerde cerrar los archivos al final ;)
-
-
-def ej3():
-    # Ejercicios con archivos CSV
+def ej4():
+    print('Ejercicios con archivos CSV')
     archivo = 'propiedades.csv'
     '''
     Realice un programa que abra el archivo CSV "propiedades.csv"
@@ -73,73 +107,9 @@ def ej3():
     '''
 
 
-def ej4():
-    # Ejercicios con diccionarios
-    inventario = {'manzanas': 6}
-
-    '''
-    Realice un programa que pida por consola
-    el nombre de una fruta o verdura y luego
-    pida la cantidad que hay en stock
-    Agregar al diccionario "inventario" el par:
-    <fruta>:<cantidad>
-    El diccionario "inventario" ya viene cargado
-    con el valor el stock de manzanas para que vean
-    de ejemplo.
-    Esta operacion se debe realizar en un bucle
-    hasta ingresar como fruta/verdura la palabra "FIN"
-
-    '''
-
-    # En el bucle realizar:
-    # Generar y completar el diccionario con las frutas y cantidades
-    # ingresadas por consola hasta ingresar la palabra "FIN"
-
-
-def ej5():
-    # Ejercicios con archivos CSV
-    inventario = {'Fruta Verdura': 'manzana', 'Cantidad': 10}
-
-    '''
-    Parecido al el ejercicio anterior, genere un archivo CSV
-    (abrir un archivo CSV como escritura) que posea las siguientes
-    columnas:
-    1) 'Fruta Verdura'
-    2) 'Cantidad'
-
-    Estas dos columnas representan el nombre de las dos "claves"
-    del diccionario, que utilizaremos para escribir en el archivo CSV:
-
-    writer.writerow({'Fruta Verdura': ....., 'Cantidad': ....})
-
-    Ojo! No es igual al diccionario del anterior ejercicio, 
-    porque el anterior usaba como "clave" el nombre de la fruta.
-    Ahora tenemos dos pares de valores "clave: valor", pueden
-    ver el inventario con el ejemplo de la manzana.
-
-    Deberá realizar un bucle en donde en cada iteracion del bucle
-    se le socilitará por consola que ingrese un tipo de fruta o verdura
-    y su cantidad, deberá escribir una línea en el archivo CSV (una fila)
-    con esa información ingresada.
-    El bucle finalizará cuando se ingrese como fruta o verdura
-    la palabra "FIN"
-
-    Al finalizar deberá tener un archivo (con el nombre que usted haya
-    elegido) con todas las filas completas en las dos columnas especificadas
-    con todas las frutas o verduras ingresadas y sus cantidades
-    '''
-    # Recuerde crear el header correspondiente con "writeheader", el cual
-    # se debe especificar al abrir el archivo.
-
-    # Bucle....
-
-    # writer.writerow({'Fruta Verdura': ....., 'Cantidad': ....})
-
-
 if __name__ == '__main__':
     print("Bienvenidos a otra clase de Inove con Python")
     ej1()
-    #ej2()
-    #ej3()
-    #ej4()
-    #ej5()
+    # ej2()
+    # ej3()
+    # ej4()
