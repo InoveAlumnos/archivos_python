@@ -27,8 +27,9 @@ def read_csv():
         # lista de diccionarios
         data = list(csv.DictReader(csvfile))
 
+    # Obtener todos los datos de la fila 0
     row = data[0]
-    print('Fila 0:', row)
+    print('Datos Fila 0:', row)
     print('Fila 0, dato latitud:', row.get('latitud'))
 
     latitud = data[0].get('latitud')
@@ -39,8 +40,11 @@ def read_csv():
         if i == 5:
             break
         row = data[i]
-        latitud = float(row.get('latitud'))
-        print('Fila', i, 'dato latitud:', latitud)
+        try:
+            latitud = float(row.get('latitud'))
+            print('Fila', i, 'dato latitud:', latitud)
+        except:
+            print('Error Fila', i, 'dato latitud faltante')
 
 
 def write_csv():
