@@ -18,7 +18,7 @@ def agregar_datos():
 
     # Este archivo ya tiene algunos pisos cargados, agregamos más
     # Abrir un archivo CSV con el flag "a"
-    csvfile = open('edificio2.csv', 'a')
+    csvfile = open('edificio2.csv', 'a', newline='')
 
     # Generar un "escritor" para modificar el archivo
     writer = csv.DictWriter(csvfile, fieldnames=header)
