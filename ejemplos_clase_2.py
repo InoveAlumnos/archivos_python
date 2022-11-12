@@ -2,7 +2,7 @@
 # Ejemplos de clase
 
 # Autor: Inove Coding School
-# Version: 2.0
+# Version: 2.2
 
 import csv
 
@@ -30,18 +30,25 @@ def read_csv():
     # Obtener todos los datos de la fila 0
     row = data[0]
     print('Datos Fila 0:', row)
-    print('Fila 0, dato latitud:', row.get('latitud'))
+    print('Fila 0, dato latitud:', row['latitud'])
 
-    latitud = data[0].get('latitud')
+    # Obtener de la fila 0 la latitud
+    latitud = data[0]['latitud']
     print('Latitud:', latitud)
 
+    # Obtener la cantidad de filas del archivo
+    # y recorrerlo    
     cantidad_filas = len(data)
     for i in range(cantidad_filas):
+        # Cuando llegue a la fila 5 se detendrá el bucle
+        # para no hacer muy largo el ejemplo
         if i == 5:
             break
+
+        # Leer fila
         row = data[i]
         try:
-            latitud = float(row.get('latitud'))
+            latitud = float(row['latitud'])
             print('Fila', i, 'dato latitud:', latitud)
         except:
             print('Error Fila', i, 'dato latitud faltante')
@@ -57,17 +64,16 @@ def write_csv():
     # basado en los nombres de las columnas
     writer = csv.DictWriter(csvfile, fieldnames=header)
 
-    mi_nombre = 'Max'
-    mi_apellido = 'Power'
-
+    # Escribir el encabezado en el archivo (nombres columnas)
     writer.writeheader()
-    fila = {'nombre': mi_nombre, 'apellido': mi_apellido}
-    fila['nombre'] = mi_nombre
-    writer.writerow(fila)
-    writer.writerow({'apellido': 'School', 'nombre': 'Inove', 'numero': '12345678'})
+   
+    nueva_fila = {'nombre': 'Max', 'apellido': 'Power'}
+    writer.writerow(nueva_fila)
+
+    nueva_fila = {'apellido': 'Escuela', 'nombre': 'Inove', 'numero': '12345678'}
+    writer.writerow(nueva_fila)
 
     csvfile.close()
-
 
 
 if __name__ == '__main__':
